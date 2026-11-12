@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/breml/logstash-config/internal/app"
+	"github.com/flashcatcloud/logstash-config/internal/app"
 )
 
 var Version = "(unknown)"

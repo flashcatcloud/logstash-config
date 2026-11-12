@@ -448,6 +448,8 @@ func (sa StringAttribute) StringAttributeType() StringAttributeType {
 
 // A NumberAttribute node represents a plugin attribute of type number.
 type NumberAttribute struct {
+	// Literal is the original number token when parsed from a configuration.
+	Literal string
 	Start   Pos
 	name    string
 	value   float64
@@ -1198,7 +1200,6 @@ type StringOrRegexp interface {
 
 // stringOrRegexp() ensures that only stringOrRegexp/type nodes can be.
 // assigned to an StringOrRegexp.
-//
 func (StringAttribute) stringOrRegexp() {}
 func (Regexp) stringOrRegexp()          {}
 

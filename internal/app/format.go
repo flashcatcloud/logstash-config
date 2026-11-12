@@ -3,7 +3,7 @@ package app
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/breml/logstash-config/internal/app/format"
+	"github.com/flashcatcloud/logstash-config/internal/app/format"
 )
 
 func makeFormatCmd() *cobra.Command {

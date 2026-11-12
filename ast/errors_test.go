@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/breml/logstash-config/ast"
+	"github.com/flashcatcloud/logstash-config/ast"
 )
 
 func TestNotFoundError(t *testing.T) {

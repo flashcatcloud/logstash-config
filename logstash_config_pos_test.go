@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	. "github.com/breml/logstash-config"
-	"github.com/breml/logstash-config/ast"
+	. "github.com/flashcatcloud/logstash-config"
+	"github.com/flashcatcloud/logstash-config/ast"
 )
 
 func TestPos(t *testing.T) {

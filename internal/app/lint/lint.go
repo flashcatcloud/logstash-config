@@ -8,10 +8,10 @@ import (
 	"github.com/hashicorp/go-multierror"
 	"github.com/pkg/errors"
 
-	config "github.com/breml/logstash-config"
-	"github.com/breml/logstash-config/ast"
-	"github.com/breml/logstash-config/ast/astutil"
-	"github.com/breml/logstash-config/internal/format"
+	config "github.com/flashcatcloud/logstash-config"
+	"github.com/flashcatcloud/logstash-config/ast"
+	"github.com/flashcatcloud/logstash-config/ast/astutil"
+	"github.com/flashcatcloud/logstash-config/internal/format"
 )
 
 type Lint struct {

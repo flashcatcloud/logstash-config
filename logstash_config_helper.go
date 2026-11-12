@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/breml/logstash-config/ast"
+	"github.com/flashcatcloud/logstash-config/ast"
 )
 
 type exceptionalCommentsWarnings []string
@@ -261,6 +261,7 @@ func (c *current) attribute(name, value interface{}) (ast.Attribute, error) {
 		return sa, nil
 	case ast.NumberAttribute:
 		na := ast.NewNumberAttribute(key.ValueString(), value.Value())
+		na.Literal = value.Literal
 		na.Start = c.astPos()
 		return na, nil
 	case ast.ArrayAttribute:
@@ -307,7 +308,9 @@ func (c *current) number() (ast.NumberAttribute, error) {
 		// TODO: is this possible to happen? are all values, which are valid floats in Logstash/Ruby also valid floats in Go?
 		return ast.NumberAttribute{}, err
 	}
-	return ast.NewNumberAttribute("", f), nil
+	n := ast.NewNumberAttribute("", f)
+	n.Literal = string(c.text)
+	return n, nil
 }
 
 func (c *current) array(attributes1, footerComment1 interface{}) (ast.ArrayAttribute, error) {

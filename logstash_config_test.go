@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	. "github.com/breml/logstash-config"
-	"github.com/breml/logstash-config/ast"
+	. "github.com/flashcatcloud/logstash-config"
+	"github.com/flashcatcloud/logstash-config/ast"
 )
 
 func ExampleParseReader() {
@@ -993,5 +993,20 @@ func TestParseIgnoreComments(t *testing.T) {
 				t.Errorf("Expected %q parsed input to print the same as input:\n%s", inputFilename, printDiff(string(expected), got))
 			}
 		})
+	}
+}
+
+func TestNumberLiteral(t *testing.T) {
+	const src = "filter { sample { first => 1.0 second => 9007199254740993 } }"
+	got, err := Parse("numbers.conf", []byte(src))
+	if err != nil {
+		t.Fatal(err)
+	}
+	plugin := got.(ast.Config).Filter[0].BranchOrPlugins[0].(ast.Plugin)
+	for i, want := range []string{"1.0", "9007199254740993"} {
+		number := plugin.Attributes[i].(ast.NumberAttribute)
+		if number.Literal != want {
+			t.Errorf("attribute %d literal = %q, want %q", i, number.Literal, want)
+		}
 	}
 }

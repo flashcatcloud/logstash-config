@@ -1,4 +1,4 @@
-module github.com/breml/logstash-config
+module github.com/flashcatcloud/logstash-config
 
 go 1.14
 

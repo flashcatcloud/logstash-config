@@ -17,7 +17,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/breml/logstash-config/ast"
+	"github.com/flashcatcloud/logstash-config/ast"
 )
 
 var g = &grammar{
